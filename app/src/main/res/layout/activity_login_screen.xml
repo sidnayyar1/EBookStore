@@ -16,22 +16,43 @@
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20dp" />
-    <EditText
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:hint="Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:hint="Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-<Button
-    android:layout_marginTop="20dp"
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Login"/>
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:id="@+id/edtEmail"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.inputmethodservice.ExtractEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:id="@+id/edtPass"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
+
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Login" />
 
 </LinearLayout>
