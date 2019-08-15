@@ -31,10 +31,10 @@ public class HomeScreenForAdmin extends AppCompatActivity implements
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 4"));
+        tabLayout.addTab(tabLayout.newTab().setText("View"));
+        tabLayout.addTab(tabLayout.newTab().setText("Add"));
+        tabLayout.addTab(tabLayout.newTab().setText("Delete"));
+        tabLayout.addTab(tabLayout.newTab().setText("Update"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
