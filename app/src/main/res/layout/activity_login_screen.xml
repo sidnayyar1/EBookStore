@@ -4,59 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:layout_height="match_parent"
+    android:background="@drawable/bookwal2"
     tools:context=".LoginScreen">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/booklogo"
+        android:tint="@android:color/white"
+       />
     <TextView
-        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="Login Page"
+        android:textStyle="bold"
+        android:text="E Book Store"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="@android:color/white"
         android:textSize="20dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/colorPrimary"
-        app:boxStrokeColor="@color/colorPrimaryDark"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:padding="5dp"
+
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cust_layout">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white"
+            app:boxStrokeColor="@android:color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
             android:id="@+id/userEmail"
             android:foregroundTint="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Your Email"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:textSize="15sp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:hint="Email"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:padding="5dp"
+
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cust_layout">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/colorPrimary"
-        app:boxStrokeColor="@color/colorPrimaryDark"
+        android:textColorHint="@android:color/white"
+        app:boxStrokeColor="@android:color/white"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
             android:id="@+id/userPassword"
-            android:foregroundTint="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
             android:inputType="textPassword"
-            android:hint="Enter Your Password"/>
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:hint="Password"/>
     </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:orientation="horizontal">
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember Me?"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
     <Button
         android:id="@+id/loginBtn"
         android:background="@drawable/login_btn_design"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -64,11 +110,40 @@
         android:layout_marginRight="10dp"
         android:text="Login" />
 
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textColor="#555454"
-        android:text="All Rights Are Reserved Since 2019."
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:text="I don't have account yet."
         android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/signUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="SignUp?"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:text="All Rights Are Reserved Since 2019."-->
+        <!--android:layout_gravity="center"/>-->
 </LinearLayout>
