@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HomeScreenForAdmin"></activity>
         <activity
             android:name=".HomeScreenForUser"
             android:label="@string/title_activity_home_screen_for_user"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".HomeScreenForAdmin" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
