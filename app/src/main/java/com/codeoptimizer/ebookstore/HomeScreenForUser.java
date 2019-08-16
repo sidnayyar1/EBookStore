@@ -1,5 +1,6 @@
 package com.codeoptimizer.ebookstore;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class HomeScreenForUser extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +47,9 @@ public class HomeScreenForUser extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        updateNavigationHeader();
     }
 
     @Override
@@ -86,8 +91,10 @@ public class HomeScreenForUser extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -102,5 +109,16 @@ public class HomeScreenForUser extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void updateNavigationHeader(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView Email = headerView.findViewById(R.id.txtEmail);
+
+        Intent intent = getIntent();
+        String email =  intent.getStringExtra("email");
+        Email.setText(email);
+
     }
 }

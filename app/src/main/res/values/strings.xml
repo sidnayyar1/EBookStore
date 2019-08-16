@@ -15,6 +15,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_home_screen_for_user">HomeScreenForUser</string>
+    <string name="Wishlist">Wishlist</string>
+    <string name="ShopByCategory">Shop By Category</string>
+    <string name="AboutUs">About us</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
