@@ -9,11 +9,11 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/wishlist"
             android:icon="@drawable/ic_favorite_black_24dp"
             android:title="@string/Wishlist" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/shopbycategory"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/ShopByCategory" />
     </group>
@@ -21,9 +21,13 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/AboutUs" />
+            <item
+                android:id="@+id/Setting"
+                android:icon="@drawable/settings"
+                android:title="Settings"/>
         </menu>
     </item>
 
