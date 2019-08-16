@@ -1,11 +1,20 @@
 package com.codeoptimizer.ebookstore.Model;
 
 public class BookData {
+    private String bookId;
     private String bookName;
     private String bookAuthor;
     private String bookDesc;
     private String bookUrl;
     private String bookCategory;
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
 
     public String getBookCategory() {
         return bookCategory;

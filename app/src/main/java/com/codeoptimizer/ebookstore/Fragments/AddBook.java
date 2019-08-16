@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.codeoptimizer.ebookstore.R;
 
@@ -21,6 +23,10 @@ import com.codeoptimizer.ebookstore.R;
  * create an instance of this fragment.
  */
 public class AddBook extends Fragment {
+
+    Spinner  catSpinner;
+    EditText bookName, bookAuthor,bookDesc,bookUrl;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,7 +73,13 @@ public class AddBook extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_book, container, false);
+        View layout = inflater.inflate(R.layout.fragment_add_book, container, false);
+        catSpinner = (Spinner)layout.findViewById(R.id.catSpinner);
+        bookName = (EditText)layout.findViewById(R.id.adBookName);
+        bookAuthor = (EditText)layout.findViewById(R.id.adBookAuthor);
+        bookDesc = (EditText)layout.findViewById(R.id.addBookDesc);
+        bookUrl = (EditText)layout.findViewById(R.id.adBookUrl);
+        return layout;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
