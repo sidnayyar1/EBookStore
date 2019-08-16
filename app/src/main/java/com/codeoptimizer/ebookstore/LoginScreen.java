@@ -3,9 +3,11 @@ package com.codeoptimizer.ebookstore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,8 @@ public class LoginScreen extends AppCompatActivity {
     Button loginBtn;
     private MyDataBase mdb;
     TextView signUpBtn;
+    CheckBox rememberMe;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,7 @@ public class LoginScreen extends AppCompatActivity {
         userPassword = (EditText)findViewById(R.id.userPassword);
         loginBtn = (Button)findViewById(R.id.loginBtn);
         signUpBtn = (TextView)findViewById(R.id.signUpBtn);
+        rememberMe = (CheckBox)findViewById(R.id.rememberMe);
 
         mdb = new MyDataBase(getApplicationContext());
         mdb.open();
@@ -35,6 +40,15 @@ public class LoginScreen extends AppCompatActivity {
         mdb.save("vishal@gmail.com","vishal123");
         mdb.save("diksha@gmail.com","diksha123");
         mdb.close();
+
+        sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(sharedPreferences.contains("userEmail")){
+            userEmail.setText(sharedPreferences.getString("userEmail",""));
+            userPassword.setText(sharedPreferences.getString("userPassword",""));
+        }
+
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +76,14 @@ public class LoginScreen extends AppCompatActivity {
 
                 if(count != 0 ){
 
+                    if(rememberMe.isChecked()){
+                        editor.putString("userEmail",email);
+                        editor.putString("userPassword",password);
+                    }else {
+                        editor.remove("userEmail");
+                        editor.remove("userPassword");
+                    }
+                    editor.apply();
                       if (email.startsWith("Admin")){
                          // Toast.makeText(LoginScreen.this,email,Toast.LENGTH_LONG).show();
                           Intent intent = new Intent(LoginScreen.this, HomeScreenForAdmin.class);
