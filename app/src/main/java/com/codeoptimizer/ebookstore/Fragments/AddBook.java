@@ -35,7 +35,7 @@ public class AddBook extends Fragment {
     Button addBook;
     String catBook;
     BookDataBase bdb;
-    String[] bookCat = { "Science", "Networking", "Multimedia", "Programming", "Marketing"};
+    String[] bookCat = { "Select Book Category","Science", "Networking", "Multimedia", "Programming", "Marketing"};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -119,7 +119,6 @@ public class AddBook extends Fragment {
                 String bUrl = bookUrl.getText().toString().trim();
                 bdb.open();
                 bdb.save(bName,bAuthor,bdes,bUrl,catBook);
-
                 bdb.close();
                 Toast.makeText(getContext(),"Book Added",Toast.LENGTH_LONG).show();
 

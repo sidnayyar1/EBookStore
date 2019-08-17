@@ -5,12 +5,23 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
+import com.codeoptimizer.ebookstore.Adapters.AdapterForDeleteBook;
+import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
+import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
+import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +31,14 @@ import com.codeoptimizer.ebookstore.R;
  * Use the {@link DeleteBook#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DeleteBook extends Fragment {
+public class DeleteBook extends Fragment implements AdapterListenerForDeleteBook {
+
+    RecyclerView recyclerDeleteBook;
+    RecyclerView.Adapter adapter,adapter1;
+    RecyclerView.LayoutManager layoutManager;
+    List<BookData> listData = new ArrayList<>();
+    BookDataBase bdb;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,7 +85,29 @@ public class DeleteBook extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delete_book, container, false);
+        View layout =  inflater.inflate(R.layout.fragment_delete_book, container, false);
+        recyclerDeleteBook = (RecyclerView)layout.findViewById(R.id.recyclerDelete);
+        bdb = new BookDataBase(getContext());
+        recyclerDeleteBook.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerDeleteBook.setNestedScrollingEnabled(false);
+        adapter=new AdapterForDeleteBook(listData,getContext(),this);
+        recyclerDeleteBook.setAdapter(adapter);
+
+        bdb.open();
+        listData.addAll(bdb.getBookData());
+        BookData bookData = new BookData();
+        for (int i = 0; i<bdb.getBookData().size();i++){
+            bookData.setBookName(bdb.getBookData().get(i).getBookName());
+            bookData.setBookAuthor(bdb.getBookData().get(i).getBookAuthor());
+            bookData.setBookDesc(bdb.getBookData().get(i).getBookDesc());
+            bookData.setBookUrl(bdb.getBookData().get(i).getBookUrl());
+            bookData.setBookCategory(bdb.getBookData().get(i).getBookCategory());
+
+        }
+        adapter.notifyDataSetChanged();
+        bdb.close();
+        return  layout;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -92,6 +132,12 @@ public class DeleteBook extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void clicked(int position) {
+        // for delete book logic
+        Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
     }
 
     /**

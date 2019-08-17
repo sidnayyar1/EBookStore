@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.ShopyByCategoryFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
-import com.codeoptimizer.ebookstore.Utilities.Settings;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -107,13 +106,6 @@ public class HomeScreenForUser extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.BasicFrameLayout,new ShopyByCategoryFragment()).commit();
                 break;
 
-            case R.id.Setting:
-                Intent i = new Intent(HomeScreenForUser.this,Settings.class);
-                startActivity(i);
-            case R.id.Logout:
-                Intent i2 = new Intent(HomeScreenForUser.this,LoginScreen.class);
-                startActivity(i2);
-                break;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -20,14 +20,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#C7E0FA">
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <Spinner
-        android:layout_margin="5dp"
         android:id="@+id/catSpinner"
-        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </Spinner>
+
+        </LinearLayout>
     </LinearLayout>
     <EditText
         android:id="@+id/adBookName"
