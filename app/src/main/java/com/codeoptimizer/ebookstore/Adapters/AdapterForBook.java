@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,9 +44,8 @@ public class AdapterForBook extends RecyclerView.Adapter<AdapterForBook.MyViewHo
         holder.author.setText(dataProvider.getBookAuthor());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
-
-       // Glide.with(context).load(Common.BASEIMG  + "/product/" + dataProvider.getImage()).into(holder.im1);
-
+        Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
+       
 
     }
 

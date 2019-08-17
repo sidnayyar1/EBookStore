@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
-    android:background="#C7E0FA"
     tools:context=".Fragments.DeleteBook">
 
   <androidx.cardview.widget.CardView
@@ -13,6 +12,7 @@
       android:layout_height="match_parent"
       app:cardCornerRadius="10dp"
       android:padding="5dp"
+      app:cardBackgroundColor="#C7E0FA"
       android:layout_margin="8dp">
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/recyclerDelete"

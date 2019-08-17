@@ -138,6 +138,13 @@ public class DeleteBook extends Fragment implements AdapterListenerForDeleteBook
     public void clicked(int position) {
         // for delete book logic
         Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
+        bdb.open();
+        String in = bdb.getBookData().get(position).getBookId();
+        bdb.delete(in);
+        listData.clear();
+        listData.addAll(bdb.getBookData());
+        adapter.notifyDataSetChanged();
+        bdb.close();
     }
 
     /**

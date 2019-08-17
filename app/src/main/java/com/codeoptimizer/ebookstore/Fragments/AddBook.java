@@ -118,9 +118,25 @@ public class AddBook extends Fragment {
                 String bdes = bookDesc.getText().toString().trim();
                 String bUrl = bookUrl.getText().toString().trim();
                 bdb.open();
-                bdb.save(bName,bAuthor,bdes,bUrl,catBook);
-                bdb.close();
-                Toast.makeText(getContext(),"Book Added",Toast.LENGTH_LONG).show();
+                if(!catBook.equalsIgnoreCase("Select Book Category")) {
+                    if(!bName.equalsIgnoreCase("") && !bAuthor.equalsIgnoreCase("") && !bdes.equalsIgnoreCase("") && !bUrl.equalsIgnoreCase("")) {
+                        bdb.save(bName, bAuthor, bdes, bUrl, catBook);
+                        bdb.close();
+                        bookName.setText("");
+                        bookAuthor.setText("");
+                        bookDesc.setText("");
+                        bookUrl.setText("");
+                        Toast.makeText(getContext(), "Book Added", Toast.LENGTH_LONG).show();
+
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Fill all the Details", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                else {
+                    Toast.makeText(getContext(), "Select a Valid Category", Toast.LENGTH_SHORT).show();
+                }
 
 
             }
