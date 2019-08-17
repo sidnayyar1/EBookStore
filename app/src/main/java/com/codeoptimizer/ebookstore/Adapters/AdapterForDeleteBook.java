@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
@@ -47,7 +48,8 @@ public class AdapterForDeleteBook extends RecyclerView.Adapter<AdapterForDeleteB
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
 
-        // Glide.with(context).load(Common.BASEIMG  + "/product/" + dataProvider.getImage()).into(holder.im1);
+        Glide.with(context).load("https://codeoptimizer.000webhostapp.com/"+dataProvider.getBookUrl()+".png").into(holder.bookImg);
+
 
         holder.deleteBook.setOnClickListener(new View.OnClickListener() {
             @Override
