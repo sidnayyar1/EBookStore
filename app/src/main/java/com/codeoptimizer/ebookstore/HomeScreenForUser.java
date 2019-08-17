@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
-import com.codeoptimizer.ebookstore.FragmentsForUser.ShopByCategoryFragment;
+import com.codeoptimizer.ebookstore.FragmentsForUser.ShopyByCategoryFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
 import com.codeoptimizer.ebookstore.Utilities.Settings;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -104,7 +104,7 @@ public class HomeScreenForUser extends AppCompatActivity
                 break;
 
             case R.id.shopbycategory:
-                getSupportFragmentManager().beginTransaction().replace(R.id.BasicFrameLayout,new ShopByCategoryFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.BasicFrameLayout,new ShopyByCategoryFragment()).commit();
                 break;
 
             case R.id.Setting:
