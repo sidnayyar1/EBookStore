@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,7 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
+import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
+import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -30,6 +37,11 @@ public class ViewFragment extends Fragment {
     TextView adminEmail;
     RecyclerView recyclerViewBook;
     SharedPreferences sharedPreferences;
+
+    RecyclerView.Adapter adapter,adapter1;
+    RecyclerView.LayoutManager layoutManager;
+    List<BookData> listData = new ArrayList<>();
+    BookDataBase bdb;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,6 +93,7 @@ public class ViewFragment extends Fragment {
         View layout =  inflater.inflate(R.layout.fragment_view, container, false);
         adminEmail = (TextView)layout.findViewById(R.id.adminEmail);
         recyclerViewBook = (RecyclerView)layout.findViewById(R.id.recyclerViewBook);
+        bdb = new BookDataBase(getContext());
 
         sharedPreferences = this.getActivity().getSharedPreferences("login",MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -89,7 +102,25 @@ public class ViewFragment extends Fragment {
             adminEmail.setText(sharedPreferences.getString("userEmail",""));
         }
 
+        recyclerViewBook.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        recyclerViewBook.setNestedScrollingEnabled(false);
+        adapter=new AdapterForBook(listData,getContext());
+        recyclerViewBook.setAdapter(adapter);
+
+        bdb.open();
+        listData.addAll(bdb.getBookData());
+        BookData bookData = new BookData();
+        for (int i = 0; i<bdb.getBookData().size();i++){
+            bookData.setBookName(bdb.getBookData().get(i).getBookName());
+            bookData.setBookAuthor(bdb.getBookData().get(i).getBookAuthor());
+            bookData.setBookDesc(bdb.getBookData().get(i).getBookDesc());
+            bookData.setBookUrl(bdb.getBookData().get(i).getBookUrl());
+            bookData.setBookCategory(bdb.getBookData().get(i).getBookCategory());
+
+        }
+        adapter.notifyDataSetChanged();
+        bdb.close();
 
         return layout;
     }
@@ -118,6 +149,12 @@ public class ViewFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        adapter.notifyDataSetChanged();
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -131,5 +168,11 @@ public class ViewFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 }

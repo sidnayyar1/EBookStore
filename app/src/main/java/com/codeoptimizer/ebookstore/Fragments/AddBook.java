@@ -9,10 +9,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
+import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +32,10 @@ public class AddBook extends Fragment {
 
     Spinner  catSpinner;
     EditText bookName, bookAuthor,bookDesc,bookUrl;
+    Button addBook;
+    String catBook;
+    BookDataBase bdb;
+    String[] bookCat = { "Science", "Networking", "Multimedia", "Programming", "Marketing"};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +89,44 @@ public class AddBook extends Fragment {
         bookAuthor = (EditText)layout.findViewById(R.id.adBookAuthor);
         bookDesc = (EditText)layout.findViewById(R.id.addBookDesc);
         bookUrl = (EditText)layout.findViewById(R.id.adBookUrl);
+        addBook = (Button)layout.findViewById(R.id.addBook);
+        bdb = new BookDataBase(getContext());
+
+        ArrayAdapter aa = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,bookCat);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        catSpinner.setAdapter(aa);
+
+        catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(getContext(),bookCat[position] , Toast.LENGTH_LONG).show();
+                catBook = bookCat[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        addBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String bName = bookName.getText().toString().trim();
+                String bAuthor = bookAuthor.getText().toString().trim();
+                String bdes = bookDesc.getText().toString().trim();
+                String bUrl = bookUrl.getText().toString().trim();
+                bdb.open();
+                bdb.save(bName,bAuthor,bdes,bUrl,catBook);
+
+                bdb.close();
+                Toast.makeText(getContext(),"Book Added",Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
         return layout;
     }
 
