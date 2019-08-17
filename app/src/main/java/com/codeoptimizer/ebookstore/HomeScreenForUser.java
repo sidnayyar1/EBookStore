@@ -3,6 +3,9 @@ package com.codeoptimizer.ebookstore;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
+import com.codeoptimizer.ebookstore.FragmentsForUser.ShopByCategoryFragment;
+import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -88,21 +91,20 @@ public class HomeScreenForUser extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        switch (item.getItemId()){
 
-        if (id == R.id.nav_home) {
 
+            case  R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.BasicFrameLayout,new HomeFragment()).commit();
+                break;
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            case R.id.wishlist:
+                getSupportFragmentManager().beginTransaction().replace(R.id.BasicFrameLayout,new WishlistFragment()).commit();
+                break;
 
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            case R.id.shopbycategory:
+                getSupportFragmentManager().beginTransaction().replace(R.id.BasicFrameLayout,new ShopByCategoryFragment()).commit();
+                break;
 
         }
 

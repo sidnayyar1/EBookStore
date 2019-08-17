@@ -8,4 +8,8 @@
     tools:context=".HomeScreenForUser"
     tools:showIn="@layout/app_bar_home_screen_for_user">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/BasicFrameLayout"></FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
