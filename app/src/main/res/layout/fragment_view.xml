@@ -17,24 +17,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:orientation="vertical">
-        <TextView
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admin Logged In"/>
-        <TextView
-            android:id="@+id/adminEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="@color/orange"
-            android:text="Admin Email"/>
+            android:padding="5dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin Logged In"/>
+                <TextView
+                    android:id="@+id/adminEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/orange"
+                    android:text="Admin Email"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/adminLogoutBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOGOUT"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/login_btn_design"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:layout_gravity="center|right"/>
+            </LinearLayout>
 
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Books Added So Far..."
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="italic"
+            android:textSize="18sp"/>
     </LinearLayout>
+
+
+
 </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

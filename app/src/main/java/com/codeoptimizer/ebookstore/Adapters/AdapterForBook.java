@@ -44,7 +44,7 @@ public class AdapterForBook extends RecyclerView.Adapter<AdapterForBook.MyViewHo
         holder.author.setText(dataProvider.getBookAuthor());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
-        Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
        Glide.with(context).load("https://codeoptimizer.000webhostapp.com/"+dataProvider.getBookUrl()+".png").into(holder.bookImg);
 
 

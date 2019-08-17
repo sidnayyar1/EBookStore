@@ -1,6 +1,7 @@
 package com.codeoptimizer.ebookstore.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
+import com.codeoptimizer.ebookstore.LoginScreen;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
 import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
@@ -42,6 +45,7 @@ public class ViewFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     List<BookData> listData = new ArrayList<>();
     BookDataBase bdb;
+    Button adminLogoutBtn;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -93,6 +97,7 @@ public class ViewFragment extends Fragment {
         View layout =  inflater.inflate(R.layout.fragment_view, container, false);
         adminEmail = (TextView)layout.findViewById(R.id.adminEmail);
         recyclerViewBook = (RecyclerView)layout.findViewById(R.id.recyclerViewBook);
+        adminLogoutBtn = (Button)layout.findViewById(R.id.adminLogoutBtn);
         bdb = new BookDataBase(getContext());
 
         sharedPreferences = this.getActivity().getSharedPreferences("login",MODE_PRIVATE);
@@ -122,6 +127,18 @@ public class ViewFragment extends Fragment {
         adapter.notifyDataSetChanged();
         bdb.close();
 
+        adminLogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.remove("userEmail");
+                editor.remove("userPassword");
+                editor.apply();
+
+                Intent in = new Intent(getContext(), LoginScreen.class);
+                startActivity(in);
+                getActivity().finish();
+            }
+        });
         return layout;
     }
 
