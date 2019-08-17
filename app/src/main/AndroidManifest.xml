@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeScreenForAdmin"></activity>
+        <activity android:name=".Utilities.Settings"></activity>
+        <activity android:name=".HomeScreenForAdmin" />
         <activity
             android:name=".HomeScreenForUser"
             android:label="@string/title_activity_home_screen_for_user"

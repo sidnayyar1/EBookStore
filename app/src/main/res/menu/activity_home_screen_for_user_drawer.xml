@@ -28,6 +28,10 @@
                 android:id="@+id/Setting"
                 android:icon="@drawable/settings"
                 android:title="Settings"/>
+            <item
+                android:id="@+id/Logout"
+                android:icon="@drawable/logout"
+                android:title="Logout"/>
         </menu>
     </item>
 
