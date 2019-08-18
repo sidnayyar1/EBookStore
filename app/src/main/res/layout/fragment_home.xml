@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,20 +23,49 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_weight="1"
         android:padding="5dp"
         android:orientation="horizontal">
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardScience"
             android:layout_weight="1"
             android:layout_width="0dp"
             app:cardCornerRadius="8dp"
             android:layout_margin="5dp"
             app:cardBackgroundColor="#F33978"
             android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/science"/>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/white"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Science"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardNetworking"
             android:layout_weight="1"
             android:layout_width="0dp"
             app:cardCornerRadius="8dp"
@@ -44,15 +73,46 @@
             app:cardBackgroundColor="#D732F3"
             android:layout_height="match_parent">
 
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:orientation="vertical">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:tint="@android:color/white"
+                   android:src="@drawable/networking"/>
+               <View
+                   android:layout_marginTop="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@android:color/white"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="20dp"/>
+               <TextView
+                   android:layout_marginTop="5dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Networking"
+                   android:textSize="20sp"
+                   android:textColor="@android:color/white"
+                   android:textStyle="bold"/>
+
+
+           </LinearLayout>
+
         </androidx.cardview.widget.CardView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_weight="1"
         android:padding="5dp"
         android:orientation="horizontal">
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardMultimedia"
             android:layout_weight="1"
             android:layout_width="0dp"
             app:cardCornerRadius="8dp"
@@ -60,8 +120,39 @@
             app:cardBackgroundColor="#2F9DF5"
             android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/multimedia"/>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/white"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Multimedia"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardMarketing"
             android:layout_weight="1"
             android:layout_width="0dp"
             app:cardCornerRadius="8dp"
@@ -69,22 +160,83 @@
             app:cardBackgroundColor="#ECBC2C"
             android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/marketing"/>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/white"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marketing"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_weight="1"
         android:padding="5dp"
         android:orientation="horizontal">
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardProgramming"
             android:layout_weight="1"
             android:layout_width="0dp"
             app:cardCornerRadius="8dp"
             android:layout_margin="5dp"
             app:cardBackgroundColor="#41D848"
             android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/programming"/>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/white"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Programming"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -100,4 +252,4 @@
     </LinearLayout>
 
 </LinearLayout>
-</LinearLayout>
+</ScrollView>

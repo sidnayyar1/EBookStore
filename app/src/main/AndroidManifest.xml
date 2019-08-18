@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DisplayBooksAccToCategory"></activity>
         <activity
             android:name=".UserScreen"
             android:label="@string/title_activity_user_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Utilities.Settings" />
         <activity android:name=".HomeScreenForAdmin" />
         <activity android:name=".LoginScreen">

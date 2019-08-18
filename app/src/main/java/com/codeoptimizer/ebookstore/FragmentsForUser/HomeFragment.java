@@ -4,11 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.codeoptimizer.ebookstore.R;
 
@@ -21,6 +23,7 @@ import com.codeoptimizer.ebookstore.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    CardView scence,netwoking,multimedia,marketing,programmming;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,7 +70,46 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View layout =  inflater.inflate(R.layout.fragment_home, container, false);
+        scence = (CardView)layout.findViewById(R.id.cardScience);
+        netwoking = (CardView)layout.findViewById(R.id.cardNetworking);
+        multimedia = (CardView)layout.findViewById(R.id.cardMultimedia);
+        marketing = (CardView)layout.findViewById(R.id.cardMarketing);
+        programmming = (CardView)layout.findViewById(R.id.cardProgramming);
+
+
+        scence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "scence", Toast.LENGTH_SHORT).show();
+            }
+        });
+        netwoking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "netwoking", Toast.LENGTH_SHORT).show();
+            }
+        });
+        multimedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "multimedia", Toast.LENGTH_SHORT).show();
+            }
+        });
+        marketing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "marketing", Toast.LENGTH_SHORT).show();
+            }
+        });
+        programmming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "programmming", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return layout;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

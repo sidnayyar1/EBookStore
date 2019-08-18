@@ -43,7 +43,7 @@ public class UserScreen extends AppCompatActivity
         fragment = new HomeFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.testFrame, fragment);
-        ft.addToBackStack(null);
+        //ft.addToBackStack(null);
         ft.commit();
 
         FloatingActionButton fab = findViewById(R.id.fab);
