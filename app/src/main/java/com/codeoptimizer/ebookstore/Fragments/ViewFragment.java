@@ -38,9 +38,9 @@ import static android.content.Context.MODE_PRIVATE;
 public class ViewFragment extends Fragment {
 
     TextView adminEmail;
-    RecyclerView recyclerViewBook;
-    SharedPreferences sharedPreferences;
 
+    SharedPreferences sharedPreferences;
+    RecyclerView recyclerViewBook;
     RecyclerView.Adapter adapter,adapter1;
     RecyclerView.LayoutManager layoutManager;
     List<BookData> listData = new ArrayList<>();

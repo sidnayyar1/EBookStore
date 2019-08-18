@@ -90,6 +90,35 @@ public class BookDataBase {
             }
             return data;
         }
+    public List<BookData> getBookDataByCategory(String category)
+    {
+
+        String whereQuery = "SELECT  * FROM " + DB_Table+" WHERE "+BookCategory+" = '"+category+"'";
+        Cursor cursor = database.rawQuery(whereQuery, null);
+        List<BookData> data= new ArrayList<>();
+       // String[] columns={KEY_ID,BookName,AuhtorName,BookDecs,BookUrl,BookCategory};
+       // Cursor cursor=database.query(DB_Table,columns,null,null,null,null,null);
+
+        int iName=cursor.getColumnIndex(BookName);
+        int iAuthor=cursor.getColumnIndex(AuhtorName);
+        int iDesc=cursor.getColumnIndex(BookDecs);
+        int iUrl=cursor.getColumnIndex(BookUrl);
+        int iCat=cursor.getColumnIndex(BookCategory);
+        int iId=cursor.getColumnIndex(KEY_ID);
+
+        for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
+            BookData book = new BookData();
+            book.setBookName(cursor.getString(iName));
+            book.setBookAuthor(cursor.getString(iAuthor));
+            book.setBookDesc(cursor.getString(iDesc));
+            book.setBookUrl(cursor.getString(iUrl));
+            book.setBookCategory(cursor.getString(iCat));
+            book.setBookId(cursor.getString(iId));
+
+            data.add(book);
+        }
+        return data;
+    }
         public void delete(String id) {
         database.delete(DB_Table, KEY_ID+"="+id, null);
     }

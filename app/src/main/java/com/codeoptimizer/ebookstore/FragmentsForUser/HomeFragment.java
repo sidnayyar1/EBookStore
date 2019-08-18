@@ -1,6 +1,7 @@
 package com.codeoptimizer.ebookstore.FragmentsForUser;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.codeoptimizer.ebookstore.DisplayBooksAccToCategory;
 import com.codeoptimizer.ebookstore.R;
 
 /**
@@ -81,31 +83,46 @@ public class HomeFragment extends Fragment {
         scence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "scence", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), "scence", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
+                intent.putExtra("category","science");
+                startActivity(intent);
             }
         });
         netwoking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "netwoking", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "netwoking", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
+                intent.putExtra("category","netwoking");
+                startActivity(intent);
             }
         });
         multimedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "multimedia", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), "multimedia", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
+                intent.putExtra("category","multimedia");
+                startActivity(intent);
             }
         });
         marketing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "marketing", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "marketing", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
+                intent.putExtra("category","marketing");
+                startActivity(intent);
             }
         });
         programmming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "programmming", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getContext(), "programmming", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
+                intent.putExtra("category","programmming");
+                startActivity(intent);
             }
         });
 
