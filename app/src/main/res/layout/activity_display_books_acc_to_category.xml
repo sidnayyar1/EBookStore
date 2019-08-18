@@ -5,9 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#D7E9FD"
     tools:context=".DisplayBooksAccToCategory">
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/innerTool"
+    app:title="Category Name"
+    app:titleTextColor="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
 
+</androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
         android:id="@+id/recyclerDisplayBooks"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

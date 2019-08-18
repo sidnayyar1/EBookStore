@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
               //  Toast.makeText(getContext(), "scence", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
-                intent.putExtra("category","science");
+                intent.putExtra("category","Science");
                 startActivity(intent);
             }
         });
@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //Toast.makeText(getContext(), "netwoking", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
-                intent.putExtra("category","netwoking");
+                intent.putExtra("category","Networking");
                 startActivity(intent);
             }
         });
@@ -103,7 +103,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                // Toast.makeText(getContext(), "multimedia", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
-                intent.putExtra("category","multimedia");
+                intent.putExtra("category","Multimedia");
                 startActivity(intent);
             }
         });
@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //Toast.makeText(getContext(), "marketing", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
-                intent.putExtra("category","marketing");
+                intent.putExtra("category","Marketing");
                 startActivity(intent);
             }
         });
@@ -121,7 +121,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
               //  Toast.makeText(getContext(), "programmming", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
-                intent.putExtra("category","programmming");
+                intent.putExtra("category","Programming");
                 startActivity(intent);
             }
         });

@@ -30,7 +30,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
     @NonNull
     @Override
     public AdapterToDisplayBook.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_design,parent,
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_book_design,parent,
                 false);
         return new AdapterToDisplayBook.MyViewHolder(v);
     }

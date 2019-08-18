@@ -1,11 +1,13 @@
 package com.codeoptimizer.ebookstore;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
@@ -22,6 +24,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
     RecyclerView recyclerDisplayBook;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
+    Toolbar innerToolbar;
     List<BookData> listData = new ArrayList<>();
     BookDataBase bdb;
     @Override
@@ -29,11 +32,26 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_books_acc_to_category);
         recyclerDisplayBook = (RecyclerView)findViewById(R.id.recyclerDisplayBooks);
+        innerToolbar = (Toolbar)findViewById(R.id.innerTool);
         Intent intent = getIntent();
         category = intent.getStringExtra("category");
 
         bdb = new BookDataBase(getApplicationContext());
         BookData bookData = new BookData();
+
+        innerToolbar.setTitle(category);
+        setSupportActionBar(innerToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //  tb.setBackgroundColor(getResources().getColor(R.color.white));
+        innerToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp));
+        innerToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         recyclerDisplayBook.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
@@ -42,7 +60,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
         recyclerDisplayBook.setAdapter(adapter);
 
         switch (category){
-            case "science":
+            case "Science":
                 bdb.open();
                 listData.clear();
                 listData.addAll(bdb.getBookDataByCategory("Science"));
@@ -60,7 +78,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 bdb.close();
                 break;
-            case "netwoking":
+            case "Networking":
                 bdb.open();
                 listData.clear();
                 listData.addAll(bdb.getBookDataByCategory("Networking"));
@@ -78,7 +96,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 bdb.close();
                 break;
-            case "multimedia":
+            case "Multimedia":
                 bdb.open();
                 listData.clear();
                 listData.addAll(bdb.getBookDataByCategory("Multimedia"));
@@ -96,7 +114,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 bdb.close();
                 break;
-            case "marketing":
+            case "Marketing":
                 bdb.open();
                 listData.clear();
                 listData.addAll(bdb.getBookDataByCategory("Marketing"));
@@ -114,7 +132,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 bdb.close();
                 break;
-            case "programmming":
+            case "Programming":
                 bdb.open();
                 listData.clear();
                 listData.addAll(bdb.getBookDataByCategory("Programming"));
