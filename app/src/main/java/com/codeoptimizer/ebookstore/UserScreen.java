@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
+import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -27,7 +28,8 @@ import android.view.Menu;
 
 public class UserScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
-        , HomeFragment.OnFragmentInteractionListener {
+        , HomeFragment.OnFragmentInteractionListener,
+        WishlistFragment.OnFragmentInteractionListener {
 
    Fragment fragment;
 
@@ -108,9 +110,15 @@ public class UserScreen extends AppCompatActivity
             ft.commit();
 
         }
-//        else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
+        else if (id == R.id.wishlist) {
+            fragment = new WishlistFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.testFrame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
+
+        }
+//        else if (id == R.id.nav_slideshow) {
 //
 //        } else if (id == R.id.nav_tools) {
 //
