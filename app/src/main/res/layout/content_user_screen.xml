@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:id="@+id/frag_con"
-    tools:context=".HomeScreenForUser"
-    tools:showIn="@layout/app_bar_home_screen_for_user">
+    tools:context=".UserScreen"
+    android:id="@+id/testFrame"
+    tools:showIn="@layout/app_bar_user_screen">
 
 </FrameLayout>

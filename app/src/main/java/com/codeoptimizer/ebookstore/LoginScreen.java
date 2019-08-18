@@ -93,7 +93,7 @@ public class LoginScreen extends AppCompatActivity {
                       }
                       else {
                      // Toast.makeText(LoginScreen.this,"USER",Toast.LENGTH_LONG).show();
-                          Intent intent = new Intent(LoginScreen.this, HomeScreenForUser.class);
+                          Intent intent = new Intent(LoginScreen.this, UserScreen.class);
                           intent.putExtra("email",email);
                           startActivity(intent);
                           finish();

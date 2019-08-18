@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codeoptimizer.ebookstore">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Utilities.Settings"></activity>
-        <activity android:name=".HomeScreenForAdmin" />
         <activity
-            android:name=".HomeScreenForUser"
-            android:label="@string/title_activity_home_screen_for_user"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".UserScreen"
+            android:label="@string/title_activity_user_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Utilities.Settings" />
+        <activity android:name=".HomeScreenForAdmin" />
         <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
