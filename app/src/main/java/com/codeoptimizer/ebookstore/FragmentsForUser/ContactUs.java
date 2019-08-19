@@ -1,14 +1,20 @@
 package com.codeoptimizer.ebookstore.FragmentsForUser;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -18,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.codeoptimizer.ebookstore.R;
 
@@ -31,8 +38,9 @@ import com.codeoptimizer.ebookstore.R;
  */
 public class ContactUs extends Fragment {
 
+    private static final int MY_PERMISSIONS_REQUEST_PHONE_CALL = 1;
     EditText edmsg,edname,edmail;
-    Button btSend;
+    Button btSend,btCall;
     String from,to,subject,message;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,6 +95,7 @@ public class ContactUs extends Fragment {
         edname=(EditText)layout.findViewById(R.id.name);
         edmail=(EditText)layout. findViewById(R.id.email);
         btSend=(Button)layout. findViewById(R.id.submit);
+        btCall=(Button)layout. findViewById(R.id.callUs);
 
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,8 +118,49 @@ public class ContactUs extends Fragment {
             }
         });
 
+        btCall.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+
+                if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_PHONE_CALL);
+                } else {
+                    String phone = "6475623440";
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:"+phone));
+                    startActivity(intent);
+                }
+
+            }
+        });
 
         return  layout;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode)
+        {
+            case MY_PERMISSIONS_REQUEST_PHONE_CALL:
+            {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    String phone = "6475623440";
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:"+phone));
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(getContext(),
+                            "Failed to place call, please try again.", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
