@@ -54,13 +54,17 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
         holder.wishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicked.clicked(Integer.parseInt(dataProvider.getBookId()),0);
+                clicked.clicked(dataProvider.getBookName(),dataProvider.getBookAuthor(),
+                dataProvider.getBookDesc(),dataProvider.getBookCategory(),dataProvider.getBookUrl(),
+                        Integer.parseInt(dataProvider.getBookId()),0);
             }
         });
         holder.cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicked.clicked(Integer.parseInt(dataProvider.getBookId()),1);
+                clicked.clicked(dataProvider.getBookName(),dataProvider.getBookAuthor(),
+                        dataProvider.getBookDesc(),dataProvider.getBookCategory(),dataProvider.getBookUrl(),
+                        Integer.parseInt(dataProvider.getBookId()),1);
             }
         });
     }

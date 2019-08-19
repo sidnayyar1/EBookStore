@@ -5,12 +5,21 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
+import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
+import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
+import com.codeoptimizer.ebookstore.Utilities.WishDataBase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +30,13 @@ import com.codeoptimizer.ebookstore.R;
  * create an instance of this fragment.
  */
 public class WishlistFragment extends Fragment {
+
+    RecyclerView wishRecycler;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    List<BookData> listData = new ArrayList<>();
+    WishDataBase wdb;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,7 +83,30 @@ public class WishlistFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wishlist, container, false);
+        View layout =  inflater.inflate(R.layout.fragment_wishlist, container, false);
+        wishRecycler = (RecyclerView)layout.findViewById(R.id.wishRecycler);
+        wdb = new WishDataBase(getContext());
+
+        wishRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        wishRecycler.setNestedScrollingEnabled(false);
+        adapter=new AdapterForBook(listData,getContext());
+        wishRecycler.setAdapter(adapter);
+
+        wdb.open();
+        listData.addAll(wdb.getBookData());
+        BookData bookData = new BookData();
+        for (int i = 0; i<wdb.getBookData().size();i++){
+            bookData.setBookName(wdb.getBookData().get(i).getBookName());
+            bookData.setBookAuthor(wdb.getBookData().get(i).getBookAuthor());
+            bookData.setBookDesc(wdb.getBookData().get(i).getBookDesc());
+            bookData.setBookUrl(wdb.getBookData().get(i).getBookUrl());
+            bookData.setBookCategory(wdb.getBookData().get(i).getBookCategory());
+
+        }
+        adapter.notifyDataSetChanged();
+        wdb.close();
+        return layout;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -17,6 +17,7 @@ import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
 import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForUser;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
+import com.codeoptimizer.ebookstore.Utilities.WishDataBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
     Toolbar innerToolbar;
     List<BookData> listData = new ArrayList<>();
     BookDataBase bdb;
+    WishDataBase wdb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
         category = intent.getStringExtra("category");
 
         bdb = new BookDataBase(getApplicationContext());
+        wdb = new WishDataBase(getApplicationContext());
         BookData bookData = new BookData();
 
         innerToolbar.setTitle(category);
@@ -159,15 +162,18 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
 
     }
 
-    @Override
-    public void clicked(int position, int type) {
-// for wishlist and cart
-        if(type == 0){
 
-            
+    @Override
+    public void clicked(String bookname, String authorname, String desc, String category, String url, int position, int type) {
+       // for cart and wishlist
+        if(type == 0){
+            wdb.open();
+            wdb.save(bookname, authorname, desc, url, category);
+            wdb.close();
+            Toast.makeText(getApplicationContext(), "Added To WishList", Toast.LENGTH_LONG).show();
 
         }else if(type ==1){
-
+            Toast.makeText(this, "Cart", Toast.LENGTH_SHORT).show();
         }
     }
 }
