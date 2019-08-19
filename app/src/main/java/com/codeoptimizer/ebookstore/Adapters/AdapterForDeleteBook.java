@@ -45,7 +45,7 @@ public class AdapterForDeleteBook extends RecyclerView.Adapter<AdapterForDeleteB
         final BookData dataProvider=listData.get(position);
         holder.bookName.setText(dataProvider.getBookName());
         holder.author.setText(dataProvider.getBookAuthor());
-        holder.price.setText(dataProvider.getBookPrice());
+        holder.price.setText("\u0024 "+dataProvider.getBookPrice());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
 

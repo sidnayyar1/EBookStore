@@ -46,7 +46,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
         final BookData dataProvider=listData.get(position);
         holder.bookName.setText(dataProvider.getBookName());
         holder.author.setText(dataProvider.getBookAuthor());
-        holder.price.setText(dataProvider.getBookPrice());
+        holder.price.setText("\u0024 "+dataProvider.getBookPrice());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
         //  Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
