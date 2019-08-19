@@ -15,6 +15,8 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.codeoptimizer.ebookstore.R;
@@ -28,6 +30,10 @@ import com.codeoptimizer.ebookstore.R;
  * create an instance of this fragment.
  */
 public class ContactUs extends Fragment {
+
+    EditText edmsg,edname,edmail;
+    Button btSend;
+    String from,to,subject,message;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,7 +42,7 @@ public class ContactUs extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
- 
+
     private OnFragmentInteractionListener mListener;
 
     public ContactUs() {
@@ -77,8 +83,31 @@ public class ContactUs extends Fragment {
         getActivity().setTitle("Profile");
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.fragment_contact_us, container, false);
+        edmsg= (EditText)layout.findViewById(R.id.msg);
+        edname=(EditText)layout.findViewById(R.id.name);
+        edmail=(EditText)layout. findViewById(R.id.email);
+        btSend=(Button)layout. findViewById(R.id.submit);
+
+        btSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                from=edmail.getText().toString();
+                to = "sidnayyar1@gmail.com";
+                subject = edname.getText().toString()+"From E-Book Store";
+                message = edmsg.getText().toString();
 
 
+                Intent email = new Intent(Intent.ACTION_SEND);
+                email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
+                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                email.putExtra(Intent.EXTRA_TEXT, message);
+
+                //need this to prompts email client only
+                email.setType("message/rfc822");
+
+                startActivity(Intent.createChooser(email, "Choose Email client :"));
+            }
+        });
 
 
         return  layout;

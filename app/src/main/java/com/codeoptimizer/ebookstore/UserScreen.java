@@ -181,6 +181,12 @@ public class UserScreen extends AppCompatActivity
 
         }else if (id == R.id.contactUs){
 
+            fragment = new ContactUs();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.testFrame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
+
         }else if (id == R.id.aboutUs){
 
         }
