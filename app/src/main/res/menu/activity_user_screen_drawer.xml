@@ -21,9 +21,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/AboutUs" />
+                android:id="@+id/Account"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="@string/Account" />
             <item
                 android:id="@+id/Setting"
                 android:icon="@drawable/settings"
