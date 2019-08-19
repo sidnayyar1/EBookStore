@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
+import com.codeoptimizer.ebookstore.Adapters.AdapterForDeleteBook;
+import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
 import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
@@ -29,7 +31,7 @@ import java.util.List;
  * Use the {@link WishlistFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WishlistFragment extends Fragment {
+public class WishlistFragment extends Fragment implements AdapterListenerForDeleteBook {
 
     RecyclerView wishRecycler;
     RecyclerView.Adapter adapter;
@@ -90,7 +92,7 @@ public class WishlistFragment extends Fragment {
         wishRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         wishRecycler.setNestedScrollingEnabled(false);
-        adapter=new AdapterForBook(listData,getContext());
+        adapter=new AdapterForDeleteBook(listData,getContext(),this);
         wishRecycler.setAdapter(adapter);
 
         wdb.open();
@@ -131,6 +133,19 @@ public class WishlistFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void clicked(int position) {
+        // to delete book from wishlist
+
+        wdb.open();
+        String in = wdb.getBookData().get(position).getBookId();
+        wdb.delete(in);
+        listData.clear();
+        listData.addAll(wdb.getBookData());
+        adapter.notifyDataSetChanged();
+        wdb.close();
     }
 
     /**
