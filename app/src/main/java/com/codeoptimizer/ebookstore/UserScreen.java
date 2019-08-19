@@ -3,6 +3,7 @@ package com.codeoptimizer.ebookstore;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.codeoptimizer.ebookstore.FragmentsForUser.CartFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,7 +30,8 @@ import android.view.Menu;
 public class UserScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
         , HomeFragment.OnFragmentInteractionListener,
-        WishlistFragment.OnFragmentInteractionListener {
+        WishlistFragment.OnFragmentInteractionListener,
+        CartFragment.OnFragmentInteractionListener {
 
    Fragment fragment;
 
@@ -117,16 +119,13 @@ public class UserScreen extends AppCompatActivity
             ft.addToBackStack(null);
             ft.commit();
 
+        }else if(id == R.id.cart){
+            fragment = new CartFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.testFrame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
         }
-//        else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_tools) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

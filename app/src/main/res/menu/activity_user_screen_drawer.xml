@@ -13,9 +13,9 @@
             android:icon="@drawable/ic_favorite_black_24dp"
             android:title="@string/Wishlist" />
         <item
-            android:id="@+id/shopbycategory"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/ShopByCategory" />
+            android:id="@+id/cart"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="@string/cart" />
     </group>
 
     <item android:title="Communicate">
