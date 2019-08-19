@@ -1,9 +1,11 @@
 package com.codeoptimizer.ebookstore;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,6 +15,7 @@ import com.codeoptimizer.ebookstore.FragmentsForUser.ContactUs;
 import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
 import com.codeoptimizer.ebookstore.Utilities.Settings;
 
+import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -30,6 +33,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class UserScreen extends AppCompatActivity
@@ -42,6 +46,8 @@ public class UserScreen extends AppCompatActivity
    Fragment fragment;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+   ImageView imageView;
+    Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
 
 
     @Override
@@ -52,6 +58,13 @@ public class UserScreen extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+imageView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+
+
+    }
+});
         sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -74,19 +87,80 @@ public class UserScreen extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         View hView =  navigationView.getHeaderView(0);
         TextView userE =(TextView)hView.findViewById(R.id.userE);
-
+        imageView = (ImageView)hView.findViewById(R.id.UserPhoto);
+        //add image on the layout when clicked
+//imageView.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View view) {
+//
+//    }
+//});
 
         if(sharedPreferences.contains("userEmail")){
             userE.setText(sharedPreferences.getString("userEmail",""));
         }
+        //--------
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
+
+//    private void SelectImage(){
+//        final CharSequence[] items = {"Camera","Galley","Cancel"};
+//
+//        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(UserScreen.this);
+//        builder.setTitle("Add Image");
+//        builder.setItems(items, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                if (items[i].equals("Camera")){
+//                    Intent i1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                    startActivityForResult(i1,REQUEST_CAMERA);
+//
+//                }else if(items[i].equals("Gallery")) {
+//
+//                    Intent i2 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                    i2.setType("image/*");
+//                    startActivityForResult(i2.createChooser(i2,"Select File"),SELECT_FILE);
+//
+//                }else if (items[i].equals("Cancel")){
+//
+//                    dialogInterface.dismiss();
+//                }
+//            }
+//        });
+//        builder.show();
+//    }
+    // getting result on the image icon
+//@Override
+//public void onActivityResult(int requestCode,int resultCode,Intent data){
+//    super.onActivityResult(requestCode,resultCode,data);
+//
+//    if (resultCode == Activity.RESULT_OK){
+//
+//
+//        if (requestCode == REQUEST_CAMERA){
+//
+//
+//            Bundle bundle = data.getExtras();
+//            final Bitmap bmp = (Bitmap) bundle.get("data");
+//            imageView.setImageBitmap(bmp);
+//
+//
+//        }else if (requestCode == SELECT_FILE){
+//
+//            Uri selectImageUri = data.getData();
+//            imageView.setImageURI(selectImageUri);
+//
+//        }
+//    }
+//}
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -201,4 +275,5 @@ public class UserScreen extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 }
