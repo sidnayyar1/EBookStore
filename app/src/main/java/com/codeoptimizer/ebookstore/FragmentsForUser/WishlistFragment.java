@@ -104,6 +104,7 @@ public class WishlistFragment extends Fragment implements AdapterListenerForDele
             bookData.setBookAuthor(wdb.getBookData().get(i).getBookAuthor());
             bookData.setBookDesc(wdb.getBookData().get(i).getBookDesc());
             bookData.setBookUrl(wdb.getBookData().get(i).getBookUrl());
+            bookData.setBookPrice(wdb.getBookData().get(i).getBookPrice());
             bookData.setBookCategory(wdb.getBookData().get(i).getBookCategory());
 
         }

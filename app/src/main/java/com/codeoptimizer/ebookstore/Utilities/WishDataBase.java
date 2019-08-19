@@ -21,13 +21,14 @@ public class WishDataBase {
     public static final String BookDecs="Book_desc";
     public static final String BookUrl="Book_url";
     public static final String BookCategory="Book_category";
+    public static final String BookPrice="Book_price";
     public static final String KEY_ID="id";
 
 
     //Query to create table
 
     public static final String Q_Create=
-            "CREATE TABLE "+DB_Table+"("+KEY_ID+" INTEGER PRIMARY KEY  AUTOINCREMENT,"+BookName+" TEXT, "+AuhtorName+" TEXT, "+BookDecs+" TEXT, "+BookUrl+" TEXT, "+BookCategory+" TEXT)";
+            "CREATE TABLE "+DB_Table+"("+KEY_ID+" INTEGER PRIMARY KEY  AUTOINCREMENT,"+BookName+" TEXT, "+AuhtorName+" TEXT, "+BookDecs+" TEXT, "+BookUrl+" TEXT, "+BookCategory+" TEXT,"+BookPrice+" TEXT)";
 
     Context c;
     private DBHelper dbHelper;
@@ -48,7 +49,7 @@ public class WishDataBase {
         return this;
     }
 
-    public void save(String name, String authorName,String desc,String url,String category) {
+    public void save(String name, String authorName,String desc,String url,String category,String price) {
 
         ContentValues cv= new ContentValues();
         cv.put(BookName,name);
@@ -56,6 +57,7 @@ public class WishDataBase {
         cv.put(BookDecs,desc);
         cv.put(BookUrl,url);
         cv.put(BookCategory,category);
+        cv.put(BookPrice,price);
         database.insert(DB_Table,null,cv);
     }
 
@@ -66,7 +68,7 @@ public class WishDataBase {
     public List<BookData> getBookData()
     {
         List<BookData> data= new ArrayList<>();
-        String[] columns={KEY_ID,BookName,AuhtorName,BookDecs,BookUrl,BookCategory};
+        String[] columns={KEY_ID,BookName,AuhtorName,BookDecs,BookUrl,BookCategory,BookPrice};
         Cursor cursor=database.query(DB_Table,columns,null,null,null,null,null);
 
         int iName=cursor.getColumnIndex(BookName);
@@ -75,6 +77,7 @@ public class WishDataBase {
         int iUrl=cursor.getColumnIndex(BookUrl);
         int iCat=cursor.getColumnIndex(BookCategory);
         int iId=cursor.getColumnIndex(KEY_ID);
+        int iPrice=cursor.getColumnIndex(BookPrice);
 
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
             BookData book = new BookData();
@@ -84,6 +87,7 @@ public class WishDataBase {
             book.setBookUrl(cursor.getString(iUrl));
             book.setBookCategory(cursor.getString(iCat));
             book.setBookId(cursor.getString(iId));
+            book.setBookPrice(cursor.getString(iPrice));
 
             data.add(book);
         }
@@ -104,6 +108,7 @@ public class WishDataBase {
         int iUrl=cursor.getColumnIndex(BookUrl);
         int iCat=cursor.getColumnIndex(BookCategory);
         int iId=cursor.getColumnIndex(KEY_ID);
+        int iPrice=cursor.getColumnIndex(BookPrice);
 
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
             BookData book = new BookData();
@@ -113,6 +118,7 @@ public class WishDataBase {
             book.setBookUrl(cursor.getString(iUrl));
             book.setBookCategory(cursor.getString(iCat));
             book.setBookId(cursor.getString(iId));
+            book.setBookPrice(cursor.getString(iPrice));
 
             data.add(book);
         }

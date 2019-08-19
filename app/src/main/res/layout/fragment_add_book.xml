@@ -101,6 +101,7 @@
                 android:id="@+id/addBookPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:hint="Book Price"/>
         </com.google.android.material.textfield.TextInputLayout>

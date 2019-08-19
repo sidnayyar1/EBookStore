@@ -164,11 +164,11 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
 
 
     @Override
-    public void clicked(String bookname, String authorname, String desc, String category, String url, int position, int type) {
+    public void clicked(String bookname, String authorname, String desc, String category, String url,String price, int position, int type) {
        // for cart and wishlist
         if(type == 0){
             wdb.open();
-            wdb.save(bookname, authorname, desc, url, category);
+            wdb.save(bookname, authorname, desc, url, category,price);
             wdb.close();
             Toast.makeText(getApplicationContext(), "Added To WishList", Toast.LENGTH_LONG).show();
 

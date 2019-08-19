@@ -56,7 +56,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
             @Override
             public void onClick(View v) {
                 clicked.clicked(dataProvider.getBookName(),dataProvider.getBookAuthor(),
-                dataProvider.getBookDesc(),dataProvider.getBookCategory(),dataProvider.getBookUrl(),
+                dataProvider.getBookDesc(),dataProvider.getBookCategory(),dataProvider.getBookUrl(),dataProvider.getBookPrice(),
                         Integer.parseInt(dataProvider.getBookId()),0);
             }
         });
@@ -64,7 +64,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
             @Override
             public void onClick(View v) {
                 clicked.clicked(dataProvider.getBookName(),dataProvider.getBookAuthor(),
-                        dataProvider.getBookDesc(),dataProvider.getBookCategory(),dataProvider.getBookUrl(),
+                        dataProvider.getBookDesc(),dataProvider.getBookCategory(),dataProvider.getBookUrl(),dataProvider.getBookPrice(),
                         Integer.parseInt(dataProvider.getBookId()),1);
             }
         });
