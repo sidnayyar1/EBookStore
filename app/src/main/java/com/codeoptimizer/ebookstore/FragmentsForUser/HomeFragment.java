@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().setTitle("E-Book Store");
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.fragment_home, container, false);
         scence = (CardView)layout.findViewById(R.id.cardScience);

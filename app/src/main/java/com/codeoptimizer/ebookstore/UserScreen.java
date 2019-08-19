@@ -1,6 +1,7 @@
 package com.codeoptimizer.ebookstore;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -30,6 +31,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class UserScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
@@ -39,6 +41,8 @@ public class UserScreen extends AppCompatActivity
         MyAccountFragment.OnFragmentInteractionListener {
 
    Fragment fragment;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -47,6 +51,11 @@ public class UserScreen extends AppCompatActivity
         setContentView(R.layout.activity_user_screen);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
 
         fragment = new HomeFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -64,6 +73,14 @@ public class UserScreen extends AppCompatActivity
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View hView =  navigationView.getHeaderView(0);
+        TextView userE =(TextView)hView.findViewById(R.id.userE);
+
+
+        if(sharedPreferences.contains("userEmail")){
+            userE.setText(sharedPreferences.getString("userEmail",""));
+        }
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -142,6 +159,9 @@ public class UserScreen extends AppCompatActivity
             startActivity(i3);
             i3.putExtra("Settings","Settings");
         }else if (id == R.id.Logout){
+            editor.remove("userEmail");
+            editor.remove("userPassword");
+            editor.apply();
             Intent i =new Intent(UserScreen.this,LoginScreen.class);
             startActivity(i);
             finish();

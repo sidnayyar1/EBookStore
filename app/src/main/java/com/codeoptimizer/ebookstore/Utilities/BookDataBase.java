@@ -22,13 +22,14 @@ public class BookDataBase {
         public static final String BookDecs="Book_desc";
         public static final String BookUrl="Book_url";
         public static final String BookCategory="Book_category";
+        public static final String BookPrice="Book_price";
         public static final String KEY_ID="id";
 
 
         //Query to create table
 
         public static final String Q_Create=
-                "CREATE TABLE "+DB_Table+"("+KEY_ID+" INTEGER PRIMARY KEY  AUTOINCREMENT,"+BookName+" TEXT, "+AuhtorName+" TEXT, "+BookDecs+" TEXT, "+BookUrl+" TEXT, "+BookCategory+" TEXT)";
+                "CREATE TABLE "+DB_Table+"("+KEY_ID+" INTEGER PRIMARY KEY  AUTOINCREMENT,"+BookName+" TEXT, "+AuhtorName+" TEXT, "+BookDecs+" TEXT, "+BookUrl+" TEXT, "+BookCategory+" TEXT,"+BookPrice+" TEXT)";
 
         Context c;
         private DBHelper dbHelper;
@@ -57,6 +58,7 @@ public class BookDataBase {
         cv.put(BookDecs,desc);
         cv.put(BookUrl,url);
         cv.put(BookCategory,category);
+       // cv.put(BookPrice,price);
         database.insert(DB_Table,null,cv);
     }
 
@@ -67,7 +69,7 @@ public class BookDataBase {
         public List<BookData> getBookData()
         {
             List<BookData> data= new ArrayList<>();
-            String[] columns={KEY_ID,BookName,AuhtorName,BookDecs,BookUrl,BookCategory};
+            String[] columns={KEY_ID,BookName,AuhtorName,BookDecs,BookUrl,BookCategory,BookPrice};
             Cursor cursor=database.query(DB_Table,columns,null,null,null,null,null);
 
             int iName=cursor.getColumnIndex(BookName);

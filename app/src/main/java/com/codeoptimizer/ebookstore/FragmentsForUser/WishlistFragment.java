@@ -84,6 +84,7 @@ public class WishlistFragment extends Fragment implements AdapterListenerForDele
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().setTitle("WishList");
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.fragment_wishlist, container, false);
         wishRecycler = (RecyclerView)layout.findViewById(R.id.wishRecycler);
