@@ -9,12 +9,9 @@ import android.os.Bundle;
 
 import com.codeoptimizer.ebookstore.FragmentsForUser.CartFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
-import com.codeoptimizer.ebookstore.FragmentsForUser.MyAccountFragment;
+import com.codeoptimizer.ebookstore.FragmentsForUser.ContactUs;
 import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
-import com.codeoptimizer.ebookstore.Model.User;
 import com.codeoptimizer.ebookstore.Utilities.Settings;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
@@ -40,7 +37,7 @@ public class UserScreen extends AppCompatActivity
         , HomeFragment.OnFragmentInteractionListener,
         WishlistFragment.OnFragmentInteractionListener,
         CartFragment.OnFragmentInteractionListener,
-        MyAccountFragment.OnFragmentInteractionListener {
+        ContactUs.OnFragmentInteractionListener {
 
    Fragment fragment;
     SharedPreferences sharedPreferences;
@@ -146,12 +143,6 @@ public class UserScreen extends AppCompatActivity
 
         }else if(id == R.id.cart){
             fragment = new CartFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.testFrame, fragment);
-            ft.addToBackStack(null);
-            ft.commit();
-        }else if (id == R.id.myAccount){
-            fragment = new MyAccountFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.testFrame, fragment);
             ft.addToBackStack(null);
