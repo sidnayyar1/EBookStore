@@ -109,13 +109,12 @@ public class CartFragment extends Fragment implements AdapterListenerForDeleteBo
             bookData.setBookUrl(cdb.getBookData().get(i).getBookUrl());
             bookData.setBookPrice(cdb.getBookData().get(i).getBookPrice());
             bookData.setBookCategory(cdb.getBookData().get(i).getBookCategory());
-
-        }
-        for (int i = 0; i<cdb.getBookData().size();i++){
             Double P =Double.valueOf(cdb.getBookData().get(i).getBookPrice());
             total += P;
+
         }
         totalPrice.setText(String.valueOf(total));
+
         adapter.notifyDataSetChanged();
         cdb.close();
 
@@ -154,6 +153,12 @@ public class CartFragment extends Fragment implements AdapterListenerForDeleteBo
         cdb.delete(in);
         listData.clear();
         listData.addAll(cdb.getBookData());
+        total=0;
+        for (int i = 0; i<cdb.getBookData().size();i++){
+        Double P =Double.valueOf(cdb.getBookData().get(i).getBookPrice());
+        total += P;
+        }
+        totalPrice.setText(String.valueOf(total));
         adapter.notifyDataSetChanged();
         cdb.close();
     }

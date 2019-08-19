@@ -21,6 +21,14 @@
     <item android:title="Communicate">
         <menu>
             <item
+                android:id="@+id/aboutUs"
+                android:icon="@drawable/ic_group_black_24dp"
+                android:title="@string/AboutUs" />
+            <item
+                android:id="@+id/contactUs"
+                android:icon="@drawable/ic_call_black_24dp"
+                android:title="@string/ContactUs" />
+            <item
                 android:id="@+id/myAccount"
                 android:icon="@drawable/ic_person_black_24dp"
                 android:title="@string/Account" />

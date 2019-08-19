@@ -25,7 +25,7 @@ import com.codeoptimizer.ebookstore.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    CardView scence,netwoking,multimedia,marketing,programmming;
+    CardView scence,netwoking,multimedia,marketing,programmming,law;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment {
         multimedia = (CardView)layout.findViewById(R.id.cardMultimedia);
         marketing = (CardView)layout.findViewById(R.id.cardMarketing);
         programmming = (CardView)layout.findViewById(R.id.cardProgramming);
+        law = (CardView)layout.findViewById(R.id.cardLaw);
 
 
         scence.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +124,14 @@ public class HomeFragment extends Fragment {
               //  Toast.makeText(getContext(), "programmming", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
                 intent.putExtra("category","Programming");
+                startActivity(intent);
+            }
+        });
+        law.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DisplayBooksAccToCategory.class);
+                intent.putExtra("category","Law");
                 startActivity(intent);
             }
         });

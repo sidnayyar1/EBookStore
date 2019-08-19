@@ -17,6 +17,7 @@ import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
 import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForUser;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
+import com.codeoptimizer.ebookstore.Utilities.CartDataBase;
 import com.codeoptimizer.ebookstore.Utilities.WishDataBase;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
     List<BookData> listData = new ArrayList<>();
     BookDataBase bdb;
     WishDataBase wdb;
+    CartDataBase cdb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
 
         bdb = new BookDataBase(getApplicationContext());
         wdb = new WishDataBase(getApplicationContext());
+        cdb = new CartDataBase(getApplicationContext());
         BookData bookData = new BookData();
 
         innerToolbar.setTitle(category);
@@ -156,6 +159,24 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
                 adapter.notifyDataSetChanged();
                 bdb.close();
                 break;
+            case "Law":
+                bdb.open();
+                listData.clear();
+                listData.addAll(bdb.getBookDataByCategory("Law"));
+
+                for (int i = 0; i<bdb.getBookDataByCategory("Law").size();i++){
+
+                    bookData.setBookName(bdb.getBookDataByCategory("Law").get(i).getBookName());
+                    bookData.setBookAuthor(bdb.getBookDataByCategory("Law").get(i).getBookAuthor());
+                    bookData.setBookDesc(bdb.getBookDataByCategory("Law").get(i).getBookDesc());
+                    bookData.setBookUrl(bdb.getBookDataByCategory("Law").get(i).getBookUrl());
+                    bookData.setBookCategory(bdb.getBookDataByCategory("Law").get(i).getBookCategory());
+
+
+                }
+                adapter.notifyDataSetChanged();
+                bdb.close();
+                break;
             default:
                 Toast.makeText(getApplicationContext(),"Some Thing Went Wrong",Toast.LENGTH_LONG).show();
         }
@@ -173,7 +194,11 @@ public class DisplayBooksAccToCategory extends AppCompatActivity implements Adap
             Toast.makeText(getApplicationContext(), "Added To WishList", Toast.LENGTH_LONG).show();
 
         }else if(type ==1){
-            Toast.makeText(this, "Cart", Toast.LENGTH_SHORT).show();
+            cdb.open();
+            cdb.save(bookname, authorname, desc, url, category,price);
+            cdb.close();
+            Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_LONG).show();
+
         }
     }
 }

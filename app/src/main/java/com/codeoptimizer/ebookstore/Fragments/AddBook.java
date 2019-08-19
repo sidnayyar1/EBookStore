@@ -35,7 +35,7 @@ public class AddBook extends Fragment {
     Button addBook;
     String catBook;
     BookDataBase bdb;
-    String[] bookCat = { "Select Book Category","Science", "Networking", "Multimedia", "Programming", "Marketing"};
+    String[] bookCat = { "Select Book Category","Science", "Networking", "Multimedia", "Programming", "Marketing", "Law"};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

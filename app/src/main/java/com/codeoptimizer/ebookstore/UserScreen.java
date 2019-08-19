@@ -63,14 +63,14 @@ public class UserScreen extends AppCompatActivity
         //ft.addToBackStack(null);
         ft.commit();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         View hView =  navigationView.getHeaderView(0);
@@ -159,6 +159,20 @@ public class UserScreen extends AppCompatActivity
             startActivity(i3);
             i3.putExtra("Settings","Settings");
         }else if (id == R.id.Logout){
+            editor.remove("userEmail");
+            editor.remove("userPassword");
+            editor.apply();
+            Intent i =new Intent(UserScreen.this,LoginScreen.class);
+            startActivity(i);
+            finish();
+        }else if (id == R.id.contactUs){
+            editor.remove("userEmail");
+            editor.remove("userPassword");
+            editor.apply();
+            Intent i =new Intent(UserScreen.this,LoginScreen.class);
+            startActivity(i);
+            finish();
+        }else if (id == R.id.aboutUs){
             editor.remove("userEmail");
             editor.remove("userPassword");
             editor.apply();
