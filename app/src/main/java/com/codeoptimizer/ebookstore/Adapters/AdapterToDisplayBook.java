@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
+import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForUser;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
 
@@ -21,10 +24,12 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
 
     List<BookData> listData = new ArrayList<>();
     private Context context;
+    AdapterListenerForUser clicked;
 
-    public AdapterToDisplayBook(List<BookData> listData, Context context) {
+    public AdapterToDisplayBook(List<BookData> listData, Context context, AdapterListenerForUser clicked) {
         this.listData = listData;
         this.context = context;
+        this.clicked = clicked;
     }
 
     @NonNull
@@ -46,7 +51,18 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
         //  Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
         Glide.with(context).load("https://codeoptimizer.000webhostapp.com/"+dataProvider.getBookUrl()+".png").into(holder.bookImg);
 
-
+        holder.wishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked.clicked(Integer.parseInt(dataProvider.getBookId()),0);
+            }
+        });
+        holder.cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked.clicked(Integer.parseInt(dataProvider.getBookId()),1);
+            }
+        });
     }
 
     @Override
@@ -58,6 +74,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
 
         TextView bookName,author,cat,desc;
         ImageView bookImg;
+        LinearLayout wishlist,cart;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +83,8 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
             cat=(TextView)itemView.findViewById(R.id.catBook);
             desc=(TextView)itemView.findViewById(R.id.descBook);
             bookImg=(ImageView)itemView.findViewById(R.id.bookImg);
+            wishlist = (LinearLayout)itemView.findViewById(R.id.addToWish);
+            cart = (LinearLayout)itemView.findViewById(R.id.addToCart);
         }
     }
 }

@@ -11,14 +11,17 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
+import com.codeoptimizer.ebookstore.Adapters.AdapterForDeleteBook;
 import com.codeoptimizer.ebookstore.Adapters.AdapterToDisplayBook;
+import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForDeleteBook;
+import com.codeoptimizer.ebookstore.Interfaces.AdapterListenerForUser;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayBooksAccToCategory extends AppCompatActivity {
+public class DisplayBooksAccToCategory extends AppCompatActivity implements AdapterListenerForUser {
 
     String category;
     RecyclerView recyclerDisplayBook;
@@ -56,7 +59,7 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
         recyclerDisplayBook.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         recyclerDisplayBook.setNestedScrollingEnabled(false);
-        adapter=new AdapterToDisplayBook(listData,getApplicationContext());
+        adapter=new AdapterToDisplayBook(listData,getApplicationContext(),this);
         recyclerDisplayBook.setAdapter(adapter);
 
         switch (category){
@@ -154,5 +157,17 @@ public class DisplayBooksAccToCategory extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Some Thing Went Wrong",Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @Override
+    public void clicked(int position, int type) {
+// for wishlist and cart
+        if(type == 0){
+
+            
+
+        }else if(type ==1){
+
+        }
     }
 }
