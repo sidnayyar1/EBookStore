@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.codeoptimizer.ebookstore.FragmentsForUser.AboutUs;
 import com.codeoptimizer.ebookstore.FragmentsForUser.CartFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.ContactUs;
@@ -41,7 +42,8 @@ public class UserScreen extends AppCompatActivity
         , HomeFragment.OnFragmentInteractionListener,
         WishlistFragment.OnFragmentInteractionListener,
         CartFragment.OnFragmentInteractionListener,
-        ContactUs.OnFragmentInteractionListener {
+        ContactUs.OnFragmentInteractionListener ,
+        AboutUs.OnFragmentInteractionListener {
 
    Fragment fragment;
     SharedPreferences sharedPreferences;
@@ -259,6 +261,11 @@ public class UserScreen extends AppCompatActivity
 
         }else if (id == R.id.aboutUs){
 
+            fragment = new AboutUs();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.testFrame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
         }
 
 
