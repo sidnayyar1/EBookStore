@@ -18,7 +18,7 @@ public class Settings extends AppCompatActivity {
 
         Intent i = new Intent();
         i.getStringExtra("Settings");
-        SystemToolbar = (Toolbar)findViewById(R.id.SettingToolbar);
+      //  SystemToolbar = (Toolbar)findViewById(R.id.SettingToolbar);
     }
 }
 

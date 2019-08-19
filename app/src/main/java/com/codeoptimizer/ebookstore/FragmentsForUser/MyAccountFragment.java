@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -17,8 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
 import com.codeoptimizer.ebookstore.UserScreen;
+import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
+import com.codeoptimizer.ebookstore.Utilities.WishDataBase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +41,6 @@ public class MyAccountFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     ImageView UserPhoto;
     Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
 
@@ -78,6 +81,7 @@ public class MyAccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().setTitle("Profile");
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.fragment_my_account, container, false);
         UserPhoto = (ImageView)layout.findViewById(R.id.userPhoto);
@@ -88,7 +92,6 @@ public class MyAccountFragment extends Fragment {
                 SelectImage();
             }
         });
-
 
         return  layout;
     }
