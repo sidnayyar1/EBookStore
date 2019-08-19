@@ -28,10 +28,7 @@
                 android:id="@+id/contactUs"
                 android:icon="@drawable/ic_call_black_24dp"
                 android:title="@string/ContactUs" />
-            <item
-                android:id="@+id/Setting"
-                android:icon="@drawable/settings"
-                android:title="Settings"/>
+
             <item
                 android:id="@+id/Logout"
                 android:icon="@drawable/logout"

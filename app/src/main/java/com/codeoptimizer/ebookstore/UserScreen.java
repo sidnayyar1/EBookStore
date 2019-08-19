@@ -46,8 +46,8 @@ public class UserScreen extends AppCompatActivity
    Fragment fragment;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-   ImageView imageView;
-    Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
+   //ImageView imageView;
+  //  Integer REQUEST_CAMERA = 1, SELECT_FILE = 0;
 
 
     @Override
@@ -58,13 +58,13 @@ public class UserScreen extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-imageView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-
-
-    }
-});
+//imageView.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View view) {
+//
+//
+//    }
+//});
         sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -87,7 +87,7 @@ imageView.setOnClickListener(new View.OnClickListener() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         View hView =  navigationView.getHeaderView(0);
         TextView userE =(TextView)hView.findViewById(R.id.userE);
-        imageView = (ImageView)hView.findViewById(R.id.UserPhoto);
+  //      imageView = (ImageView)hView.findViewById(R.id.UserPhoto);
         //add image on the layout when clicked
 //imageView.setOnClickListener(new View.OnClickListener() {
 //    @Override
@@ -221,10 +221,6 @@ imageView.setOnClickListener(new View.OnClickListener() {
             ft.replace(R.id.testFrame, fragment);
             ft.addToBackStack(null);
             ft.commit();
-        }else if (id == R.id.Setting){
-            Intent i3 = new Intent(UserScreen.this, Settings.class);
-            startActivity(i3);
-            i3.putExtra("Settings","Settings");
         }else if (id == R.id.Logout){
 
             new AlertDialog.Builder(this)
