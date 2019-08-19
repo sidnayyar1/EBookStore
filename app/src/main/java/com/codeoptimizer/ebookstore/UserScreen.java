@@ -1,11 +1,15 @@
 package com.codeoptimizer.ebookstore;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.codeoptimizer.ebookstore.FragmentsForUser.CartFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.HomeFragment;
+import com.codeoptimizer.ebookstore.FragmentsForUser.MyAccountFragment;
 import com.codeoptimizer.ebookstore.FragmentsForUser.WishlistFragment;
+import com.codeoptimizer.ebookstore.Model.User;
+import com.codeoptimizer.ebookstore.Utilities.Settings;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -31,9 +35,11 @@ public class UserScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
         , HomeFragment.OnFragmentInteractionListener,
         WishlistFragment.OnFragmentInteractionListener,
-        CartFragment.OnFragmentInteractionListener {
+        CartFragment.OnFragmentInteractionListener,
+        MyAccountFragment.OnFragmentInteractionListener {
 
    Fragment fragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +131,22 @@ public class UserScreen extends AppCompatActivity
             ft.replace(R.id.testFrame, fragment);
             ft.addToBackStack(null);
             ft.commit();
+        }else if (id == R.id.myAccount){
+            fragment = new MyAccountFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.testFrame, fragment);
+            ft.addToBackStack(null);
+            ft.commit();
+        }else if (id == R.id.Setting){
+            Intent i3 = new Intent(UserScreen.this, Settings.class);
+            startActivity(i3);
+            i3.putExtra("Settings","Settings");
+        }else if (id == R.id.Logout){
+            Intent i =new Intent(UserScreen.this,LoginScreen.class);
+            startActivity(i);
+            finish();
         }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -21,7 +21,7 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/Account"
+                android:id="@+id/myAccount"
                 android:icon="@drawable/ic_person_black_24dp"
                 android:title="@string/Account" />
             <item
