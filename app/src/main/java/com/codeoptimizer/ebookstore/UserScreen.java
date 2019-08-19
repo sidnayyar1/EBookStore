@@ -1,5 +1,7 @@
 package com.codeoptimizer.ebookstore;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -159,26 +161,37 @@ public class UserScreen extends AppCompatActivity
             startActivity(i3);
             i3.putExtra("Settings","Settings");
         }else if (id == R.id.Logout){
-            editor.remove("userEmail");
-            editor.remove("userPassword");
-            editor.apply();
-            Intent i =new Intent(UserScreen.this,LoginScreen.class);
-            startActivity(i);
-            finish();
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Logout?")
+                    .setMessage("Do you want to Logout this beautiful app?")
+                    .setPositiveButton("YES",
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    editor.remove("userEmail");
+                                    editor.remove("userPassword");
+                                    editor.apply();
+                                    Intent i =new Intent(UserScreen.this,LoginScreen.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            })
+                    .setNegativeButton("NO",
+                            new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                }
+                            }).show();
+
         }else if (id == R.id.contactUs){
-            editor.remove("userEmail");
-            editor.remove("userPassword");
-            editor.apply();
-            Intent i =new Intent(UserScreen.this,LoginScreen.class);
-            startActivity(i);
-            finish();
+
         }else if (id == R.id.aboutUs){
-            editor.remove("userEmail");
-            editor.remove("userPassword");
-            editor.apply();
-            Intent i =new Intent(UserScreen.this,LoginScreen.class);
-            startActivity(i);
-            finish();
+
         }
 
 
