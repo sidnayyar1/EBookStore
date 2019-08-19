@@ -7,6 +7,16 @@ public class BookData {
     private String bookDesc;
     private String bookUrl;
     private String bookCategory;
+    private String bookPrice;
+
+
+    public String getBookPrice() {
+        return bookPrice;
+    }
+
+    public void setBookPrice(String bookPrice) {
+        this.bookPrice = bookPrice;
+    }
 
     public String getBookId() {
         return bookId;

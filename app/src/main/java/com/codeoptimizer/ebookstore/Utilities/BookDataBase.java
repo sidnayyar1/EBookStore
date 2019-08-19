@@ -50,7 +50,7 @@ public class BookDataBase {
         return this;
     }
 
-        public void save(String name, String authorName,String desc,String url,String category) {
+        public void save(String name, String authorName,String desc,String url,String category,String price) {
 
         ContentValues cv= new ContentValues();
         cv.put(BookName,name);
@@ -58,7 +58,7 @@ public class BookDataBase {
         cv.put(BookDecs,desc);
         cv.put(BookUrl,url);
         cv.put(BookCategory,category);
-       // cv.put(BookPrice,price);
+        cv.put(BookPrice,price);
         database.insert(DB_Table,null,cv);
     }
 
@@ -78,6 +78,7 @@ public class BookDataBase {
             int iUrl=cursor.getColumnIndex(BookUrl);
             int iCat=cursor.getColumnIndex(BookCategory);
             int iId=cursor.getColumnIndex(KEY_ID);
+            int iPrice=cursor.getColumnIndex(BookPrice);
 
             for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
                 BookData book = new BookData();
@@ -87,6 +88,7 @@ public class BookDataBase {
                 book.setBookUrl(cursor.getString(iUrl));
                 book.setBookCategory(cursor.getString(iCat));
                 book.setBookId(cursor.getString(iId));
+                book.setBookPrice(cursor.getString(iPrice));
 
                 data.add(book);
             }
@@ -107,6 +109,7 @@ public class BookDataBase {
         int iUrl=cursor.getColumnIndex(BookUrl);
         int iCat=cursor.getColumnIndex(BookCategory);
         int iId=cursor.getColumnIndex(KEY_ID);
+        int iPrice=cursor.getColumnIndex(BookPrice);
 
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
             BookData book = new BookData();
@@ -116,6 +119,7 @@ public class BookDataBase {
             book.setBookUrl(cursor.getString(iUrl));
             book.setBookCategory(cursor.getString(iCat));
             book.setBookId(cursor.getString(iId));
+            book.setBookPrice(cursor.getString(iPrice));
 
             data.add(book);
         }

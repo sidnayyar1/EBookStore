@@ -45,6 +45,7 @@ public class AdapterForDeleteBook extends RecyclerView.Adapter<AdapterForDeleteB
         final BookData dataProvider=listData.get(position);
         holder.bookName.setText(dataProvider.getBookName());
         holder.author.setText(dataProvider.getBookAuthor());
+        holder.price.setText(dataProvider.getBookPrice());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
 
@@ -68,7 +69,7 @@ public class AdapterForDeleteBook extends RecyclerView.Adapter<AdapterForDeleteB
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView bookName,author,cat,desc;
+        TextView bookName,author,cat,desc,price;
         ImageView bookImg;
         LinearLayout deleteBook;
 
@@ -80,6 +81,7 @@ public class AdapterForDeleteBook extends RecyclerView.Adapter<AdapterForDeleteB
             desc=(TextView)itemView.findViewById(R.id.descBook);
             bookImg=(ImageView)itemView.findViewById(R.id.bookImg);
             deleteBook = (LinearLayout)itemView.findViewById(R.id.deleteBook);
+            price = (TextView)itemView.findViewById(R.id.priceBook);
         }
     }
 }

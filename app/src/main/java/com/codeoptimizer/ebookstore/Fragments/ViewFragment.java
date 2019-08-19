@@ -121,6 +121,7 @@ public class ViewFragment extends Fragment {
             bookData.setBookAuthor(bdb.getBookData().get(i).getBookAuthor());
             bookData.setBookDesc(bdb.getBookData().get(i).getBookDesc());
             bookData.setBookUrl(bdb.getBookData().get(i).getBookUrl());
+            bookData.setBookPrice(bdb.getBookData().get(i).getBookPrice());
             bookData.setBookCategory(bdb.getBookData().get(i).getBookCategory());
 
         }

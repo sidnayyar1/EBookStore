@@ -31,7 +31,7 @@ import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
 public class AddBook extends Fragment {
 
     Spinner  catSpinner;
-    EditText bookName, bookAuthor,bookDesc,bookUrl;
+    EditText bookName, bookAuthor,bookDesc,bookUrl,bookPrice;
     Button addBook;
     String catBook;
     BookDataBase bdb;
@@ -90,6 +90,7 @@ public class AddBook extends Fragment {
         bookDesc = (EditText)layout.findViewById(R.id.addBookDesc);
         bookUrl = (EditText)layout.findViewById(R.id.adBookUrl);
         addBook = (Button)layout.findViewById(R.id.addBook);
+        bookPrice = (EditText)layout.findViewById(R.id.addBookPrice);
         bdb = new BookDataBase(getContext());
 
         ArrayAdapter aa = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,bookCat);
@@ -117,15 +118,17 @@ public class AddBook extends Fragment {
                 String bAuthor = bookAuthor.getText().toString().trim();
                 String bdes = bookDesc.getText().toString().trim();
                 String bUrl = bookUrl.getText().toString().trim();
+                String bPrice = bookPrice.getText().toString().trim();
                 bdb.open();
                 if(!catBook.equalsIgnoreCase("Select Book Category")) {
                     if(!bName.equalsIgnoreCase("") && !bAuthor.equalsIgnoreCase("") && !bdes.equalsIgnoreCase("") && !bUrl.equalsIgnoreCase("")) {
-                        bdb.save(bName, bAuthor, bdes, bUrl, catBook);
+                        bdb.save(bName, bAuthor, bdes, bUrl, catBook,bPrice);
                         bdb.close();
                         bookName.setText("");
                         bookAuthor.setText("");
                         bookDesc.setText("");
                         bookUrl.setText("");
+                        bookPrice.setText("");
                         Toast.makeText(getContext(), "Book Added", Toast.LENGTH_LONG).show();
 
                     }

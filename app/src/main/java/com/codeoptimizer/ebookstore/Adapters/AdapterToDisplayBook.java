@@ -46,6 +46,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
         final BookData dataProvider=listData.get(position);
         holder.bookName.setText(dataProvider.getBookName());
         holder.author.setText(dataProvider.getBookAuthor());
+        holder.price.setText(dataProvider.getBookPrice());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
         //  Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
@@ -76,7 +77,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView bookName,author,cat,desc;
+        TextView bookName,author,cat,desc,price;
         ImageView bookImg;
         LinearLayout wishlist,cart;
 
@@ -89,6 +90,7 @@ public class AdapterToDisplayBook extends RecyclerView.Adapter<AdapterToDisplayB
             bookImg=(ImageView)itemView.findViewById(R.id.bookImg);
             wishlist = (LinearLayout)itemView.findViewById(R.id.addToWish);
             cart = (LinearLayout)itemView.findViewById(R.id.addToCart);
+            price = (TextView)itemView.findViewById(R.id.priceBook);
         }
     }
 }

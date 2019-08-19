@@ -42,6 +42,7 @@ public class AdapterForBook extends RecyclerView.Adapter<AdapterForBook.MyViewHo
         final BookData dataProvider=listData.get(position);
         holder.bookName.setText(dataProvider.getBookName());
         holder.author.setText(dataProvider.getBookAuthor());
+        holder.price.setText(dataProvider.getBookPrice());
         holder.cat.setText(String.valueOf(dataProvider.getBookCategory()));
         holder.desc.setText(dataProvider.getBookDesc());
       //  Toast.makeText(context, ""+dataProvider.getBookUrl(), Toast.LENGTH_SHORT).show();
@@ -57,7 +58,7 @@ public class AdapterForBook extends RecyclerView.Adapter<AdapterForBook.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView bookName,author,cat,desc;
+        TextView bookName,author,cat,desc,price;
         ImageView bookImg;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -67,6 +68,7 @@ public class AdapterForBook extends RecyclerView.Adapter<AdapterForBook.MyViewHo
             cat=(TextView)itemView.findViewById(R.id.catBook);
             desc=(TextView)itemView.findViewById(R.id.descBook);
             bookImg=(ImageView)itemView.findViewById(R.id.bookImg);
+            price = (TextView)itemView.findViewById(R.id.priceBook);
         }
     }
 }
