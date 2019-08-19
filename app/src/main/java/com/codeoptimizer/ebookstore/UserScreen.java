@@ -237,7 +237,7 @@ public class UserScreen extends AppCompatActivity
                                     editor.remove("userEmail");
                                     editor.remove("userPassword");
                                     editor.apply();
-                                    Intent i =new Intent(UserScreen.this,LoginScreen.class);
+                                    Intent i =new Intent(UserScreen.this,SplashScreen.class);
                                     startActivity(i);
                                     finish();
                                 }

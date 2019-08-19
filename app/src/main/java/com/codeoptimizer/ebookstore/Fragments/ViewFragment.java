@@ -20,6 +20,7 @@ import com.codeoptimizer.ebookstore.Adapters.AdapterForBook;
 import com.codeoptimizer.ebookstore.LoginScreen;
 import com.codeoptimizer.ebookstore.Model.BookData;
 import com.codeoptimizer.ebookstore.R;
+import com.codeoptimizer.ebookstore.SplashScreen;
 import com.codeoptimizer.ebookstore.Utilities.BookDataBase;
 
 import java.util.ArrayList;
@@ -135,7 +136,7 @@ public class ViewFragment extends Fragment {
                 editor.remove("userPassword");
                 editor.apply();
 
-                Intent in = new Intent(getContext(), LoginScreen.class);
+                Intent in = new Intent(getContext(), SplashScreen.class);
                 startActivity(in);
                 getActivity().finish();
             }
