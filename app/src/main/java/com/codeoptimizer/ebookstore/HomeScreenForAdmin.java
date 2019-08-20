@@ -33,7 +33,7 @@ public class HomeScreenForAdmin extends AppCompatActivity implements
         tabLayout.addTab(tabLayout.newTab().setText("View"));
         tabLayout.addTab(tabLayout.newTab().setText("Add"));
         tabLayout.addTab(tabLayout.newTab().setText("Delete"));
-        tabLayout.addTab(tabLayout.newTab().setText("Update"));
+       // tabLayout.addTab(tabLayout.newTab().setText("Update"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

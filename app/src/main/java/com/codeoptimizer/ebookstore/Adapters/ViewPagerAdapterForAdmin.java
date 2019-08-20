@@ -32,9 +32,6 @@ public class ViewPagerAdapterForAdmin extends FragmentStatePagerAdapter {
             case 2:
                 DeleteBook tab3 = new DeleteBook();
                 return tab3;
-            case 3:
-                UpdateBook tab4 = new UpdateBook();
-                return tab4;
             default:
                 return null;
         }
